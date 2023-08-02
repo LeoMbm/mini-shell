@@ -15,13 +15,13 @@ int main(void){
 
     while (1){
     printf("%s", prompt);
-    // Read a line from stdin
+    /* Read a line from stdin */
     chars_read = getline(&line, &len, stdin);
     line_cpy = NULL; 
 
     if (chars_read == -1) {
         printf("Exiting...\n");
-        break; // Exit the loop when CTRL+D is encountered
+        break; /* Exit the loop when CTRL+D is encountered */
     }
 
     line_cpy = malloc(sizeof(char) * (chars_read));
@@ -31,11 +31,11 @@ int main(void){
         return -1;
     }
 
-    // Copy the line to a new buffer
+    /* Copy the line to a new buffer */
     strcpy(line_cpy, line);
 
 
-    // Check for EOF (Ctrl+D or failure)
+    /* Check for EOF (Ctrl+D or failure) */
     if (chars_read == -1){
         printf("Exiting...\n");
         return -1;
@@ -46,10 +46,10 @@ int main(void){
         }
         free(argv);
 
-        // Tokenize the line
+        /* Tokenize the line */
         token = strtok(line, delim);
 
-        // Count the number of tokens
+        /* Count the number of tokens */
         num_tokens = 0;
         while (token != NULL){
             num_tokens++;
@@ -68,7 +68,7 @@ int main(void){
         }
         argv[i] = NULL;
         execmd(argv);
-        // Check for empty line
+        /* Check for empty line */
         printf("%s\n", line);
         }
     free(line_cpy);

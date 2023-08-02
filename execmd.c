@@ -3,12 +3,13 @@
 
 void execmd(char **argv){
 
-    char *cmd = NULL;
+    char *cmd = NULL, *path = NULL;
 
     if (argv){
         cmd = argv[0];
-
-        if (execve(cmd, argv, NULL) == -1){
+        path = getpath(cmd);
+        
+        if (execve(path, argv, NULL) == -1){
             perror("Error:");
         }
     }
